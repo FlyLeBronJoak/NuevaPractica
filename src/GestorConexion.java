@@ -54,7 +54,7 @@ public class GestorConexion {
     public void annadirColumna() {
         try {
             Statement sta = conn1.createStatement();
-            sta.executeUpdate("ALTER TABLE album ADD caratula");
+            sta.executeUpdate("ALTER TABLE album ADD caratula VARCHAR(10)");
             sta.close();
 
             System.out.println("Columna añadida");
@@ -67,7 +67,7 @@ public class GestorConexion {
     public void insertar() {
         try {
             Statement sta = conn1.createStatement();
-            sta.executeUpdate("INSERT INTO album VALUES (3, 'Greatest Hits', 'Queen')");
+            sta.executeUpdate("INSERT INTO album VALUES (3, 'Greatest Hits', '2019')");
             sta.close();
             System.out.println("Se ha insertado con exito");
         } catch (Exception e) {
