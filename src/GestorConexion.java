@@ -120,29 +120,12 @@ public class GestorConexion {
         }
     }
 
-    public void insertar_con_commit_cancion() {
+    public void insertar_con_commit_cancion(String id1,String nombre1, String duracion1, String letras1, String Id_Album1) {
         try {
             conn1.setAutoCommit(false);
             Statement sta = conn1.createStatement();
-            sta.executeUpdate("INSERT INTO cancion " + "VALUES (5, 'Triste', '3:15', 'Tú vienes a mis pensamientos cuando estoy fumando\n" +
-"Tantos recuerdos que tengo de ti\n" +
-"Rondando de mi mente no puedo borrarlos\n" +
-"Solo me queda aguantarlos\n" +
-"Triste\n" +
-"Mami me siento triste\n" +
-"Me muerdo siempre que pienso que tú chingas con otro\n" +
-"Ya no hay remedio para arreglar lo de nosotros\n" +
-"Ya está roto', '1')");
-            sta.executeUpdate("INSERT INTO cancion " + "VALUES (6, 'Color Esperanza', '4:12', 'Sé que hay en tus ojos con solo mirar\n" +
-"Que estas cansado de andar y de andar\n" +
-"Y caminar girando siempre en un lugar\n" +
-"Sé que las ventanas se pueden abrir\n" +
-"Cambiar el aire depende de ti\n" +
-"Te ayudara vale la pena una vez más\n" +
-"Saber que se puede querer que se pueda\n" +
-"Quitarse los miedos sacarlos afuera\n" +
-"Pintarse la cara color esperanza\n" +
-"Tentar al futuro con el corazón', '2')");
+            sta.executeUpdate("INSERT INTO cancion VALUES('"+ id1 +"', '"+ nombre1 +"', '"+ duracion1 +"', '"+ letras1 +"', '"+ Id_Album1 +"')");
+            
             conn1.commit();
         } catch (SQLException ex) {
             System.out.println("ERROR:al hacer un Insert");
@@ -156,12 +139,11 @@ public class GestorConexion {
             ex.printStackTrace();
         }
     }
-        public void insertar_con_commit_album() {
+        public void insertar_con_commit_album(String id2,String nombre2, String AnoPublicacion2) {
         try {
             conn1.setAutoCommit(false);
             Statement sta = conn1.createStatement();
-            sta.executeUpdate("INSERT INTO album " + "VALUES (8, 'Exitos Bisbal', '2017')");
-            sta.executeUpdate("INSERT INTO album " + "VALUES (9, 'Summer Festival', '2002')");
+            sta.executeUpdate("INSERT INTO album VALUES('"+ id2 +"', '"+ nombre2 +"', '"+ AnoPublicacion2 +"')");
             conn1.commit();
         } catch (SQLException ex) {
             System.out.println("ERROR:al hacer un Insert");
