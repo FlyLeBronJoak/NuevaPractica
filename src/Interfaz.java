@@ -51,16 +51,6 @@ public class Interfaz extends javax.swing.JFrame {
 
     GestorConexion gc = new GestorConexion();
 
-//        PoolConexiones pc = new PoolConexiones();
-//        gc.insertar();
-//        gc.borrarColumna();
-//        gc.annadirColumna();
-//        gc.consulta_Statement();
-//        gc.consulta_preparedStatement();
-//        gc.insertar();
-//        gc.insertar_con_commit();
-//        gc.cerrar_conexion();
-//        pc.cerrar_conexion();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -404,7 +394,6 @@ public class Interfaz extends javax.swing.JFrame {
     private void jTextField8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseClicked
         jTextField8.setText("");
     }//GEN-LAST:event_jTextField8MouseClicked
-    
 
     /**
      * @param args the command line arguments

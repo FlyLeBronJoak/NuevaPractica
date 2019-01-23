@@ -1,5 +1,4 @@
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,14 +23,12 @@ import javax.swing.table.DefaultTableModel;
 public class GestorConexion {
 
     Connection conn1 = null;
-    DefaultTableModel dtm;  
-     private ResultSet rs;
+    DefaultTableModel dtm;
+    private ResultSet rs;
     private PreparedStatement ps;
     private ResultSetMetaData rsm;
-     
 
     public GestorConexion() {
-        
 
         try {
             String url1 = "jdbc:mysql://localhost:3306/discografica"
@@ -120,12 +117,12 @@ public class GestorConexion {
         }
     }
 
-    public void insertar_con_commit_cancion(String id1,String nombre1, String duracion1, String letras1, String Id_Album1) {
+    public void insertar_con_commit_cancion(String id1, String nombre1, String duracion1, String letras1, String Id_Album1) {
         try {
             conn1.setAutoCommit(false);
             Statement sta = conn1.createStatement();
-            sta.executeUpdate("INSERT INTO cancion VALUES('"+ id1 +"', '"+ nombre1 +"', '"+ duracion1 +"', '"+ letras1 +"', '"+ Id_Album1 +"')");
-            
+            sta.executeUpdate("INSERT INTO cancion VALUES('" + id1 + "', '" + nombre1 + "', '" + duracion1 + "', '" + letras1 + "', '" + Id_Album1 + "')");
+
             conn1.commit();
         } catch (SQLException ex) {
             System.out.println("ERROR:al hacer un Insert");
@@ -139,11 +136,12 @@ public class GestorConexion {
             ex.printStackTrace();
         }
     }
-        public void insertar_con_commit_album(String id2,String nombre2, String AnoPublicacion2) {
+
+    public void insertar_con_commit_album(String id2, String nombre2, String AnoPublicacion2) {
         try {
             conn1.setAutoCommit(false);
             Statement sta = conn1.createStatement();
-            sta.executeUpdate("INSERT INTO album VALUES('"+ id2 +"', '"+ nombre2 +"', '"+ AnoPublicacion2 +"')");
+            sta.executeUpdate("INSERT INTO album VALUES('" + id2 + "', '" + nombre2 + "', '" + AnoPublicacion2 + "')");
             conn1.commit();
         } catch (SQLException ex) {
             System.out.println("ERROR:al hacer un Insert");
@@ -157,58 +155,60 @@ public class GestorConexion {
             ex.printStackTrace();
         }
     }
-    
-         public void consultaTabla1(JTable tabla)throws Exception{
+
+    public void consultaTabla1(JTable tabla) throws Exception {
         ps = conn1.prepareStatement("select * from album");
-        rs=ps.executeQuery();
-        rsm=rs.getMetaData();
-        ArrayList<Object[]> datos=new ArrayList<>();
-        while (rs.next()) {            
-            Object[] filas=new Object[rsm.getColumnCount()];
+        rs = ps.executeQuery();
+        rsm = rs.getMetaData();
+        ArrayList<Object[]> datos = new ArrayList<>();
+        while (rs.next()) {
+            Object[] filas = new Object[rsm.getColumnCount()];
             for (int i = 0; i < filas.length; i++) {
-                filas[i]=rs.getObject(i+1);
-                
+                filas[i] = rs.getObject(i + 1);
+
             }
             datos.add(filas);
         }
-        dtm=(DefaultTableModel)tabla.getModel();
-        for (int i = 0; i <datos.size(); i++) {
+        dtm = (DefaultTableModel) tabla.getModel();
+        for (int i = 0; i < datos.size(); i++) {
             dtm.addRow(datos.get(i));
         }
     }
-      public void consultaTabla2(JTable tabla)throws Exception{
+
+    public void consultaTabla2(JTable tabla) throws Exception {
         ps = conn1.prepareStatement("select * from cancion Where id_album = 1");
-        rs=ps.executeQuery();
-        rsm=rs.getMetaData();
-        ArrayList<Object[]> datos=new ArrayList<>();
-        while (rs.next()) {            
-            Object[] filas=new Object[rsm.getColumnCount()];
+        rs = ps.executeQuery();
+        rsm = rs.getMetaData();
+        ArrayList<Object[]> datos = new ArrayList<>();
+        while (rs.next()) {
+            Object[] filas = new Object[rsm.getColumnCount()];
             for (int i = 0; i < filas.length; i++) {
-                filas[i]=rs.getObject(i+1);
-                
+                filas[i] = rs.getObject(i + 1);
+
             }
             datos.add(filas);
         }
-        dtm=(DefaultTableModel)tabla.getModel();
-        for (int i = 0; i <datos.size(); i++) {
+        dtm = (DefaultTableModel) tabla.getModel();
+        for (int i = 0; i < datos.size(); i++) {
             dtm.addRow(datos.get(i));
         }
     }
-      public void consultaTabla3(JTable tabla)throws Exception{
+
+    public void consultaTabla3(JTable tabla) throws Exception {
         ps = conn1.prepareStatement("select * from cancion Where id_album = 2");
-        rs=ps.executeQuery();
-        rsm=rs.getMetaData();
-        ArrayList<Object[]> datos=new ArrayList<>();
-        while (rs.next()) {            
-            Object[] filas=new Object[rsm.getColumnCount()];
+        rs = ps.executeQuery();
+        rsm = rs.getMetaData();
+        ArrayList<Object[]> datos = new ArrayList<>();
+        while (rs.next()) {
+            Object[] filas = new Object[rsm.getColumnCount()];
             for (int i = 0; i < filas.length; i++) {
-                filas[i]=rs.getObject(i+1);
-                
+                filas[i] = rs.getObject(i + 1);
+
             }
             datos.add(filas);
         }
-        dtm=(DefaultTableModel)tabla.getModel();
-        for (int i = 0; i <datos.size(); i++) {
+        dtm = (DefaultTableModel) tabla.getModel();
+        for (int i = 0; i < datos.size(); i++) {
             dtm.addRow(datos.get(i));
         }
     }
